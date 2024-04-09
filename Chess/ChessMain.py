@@ -7,7 +7,7 @@ import pygame as p
 import ChessEngine
 
 p.init()
-width = height = 400
+width = height = 512
 dimension = 8  # dimensions of a chess board are 8x8
 sq_size = height // dimension
 max_fps = 15  # for animations later on
