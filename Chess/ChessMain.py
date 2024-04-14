@@ -64,6 +64,14 @@ def main():
                     gs.makeMove(move)
                     sqSelected = ()
                     playerClicks = []
+            elif e.type == p.KEYDOWN:
+                if e.key == p.K_z:
+                    gs.undoMove()
+                    moveLog = gs.moveLog
+                    print(moveLog)
+                    if len(moveLog) != 0:
+                        gs.undoMove()
+                    gs.undoMove()
         drawGameState(screen, gs)
         clock.tick(max_fps)
         p.display.flip()

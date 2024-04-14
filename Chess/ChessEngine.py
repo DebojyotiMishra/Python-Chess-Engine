@@ -1,10 +1,9 @@
-'''
-This class is responsible for storing all the information about the current state of a chess game.
-It will also be responsible for determining the valid moves at the current state.
-It will also keep a move log.
-'''
-
 class GameState():
+    '''
+    This class is responsible for storing all the information about the current state of a chess game.
+    It will also be responsible for determining the valid moves at the current state.
+    It will also keep a move log.
+    '''
     def __init__(self):
         # The board is an 8x8 2D List, each element of the list has 2 characters.
         # The first character represents the color of the piece, 'b' or 'w'
@@ -28,10 +27,21 @@ class GameState():
         self.moveLog = []
     
     def makeMove(self, move):
+        '''
+            Takes a move as a parameter and executes it (this will not work for castling, pawn promotion, and en-passant)
+        '''
         self.board[move.startRow][move.startCol] = "--"
         self.board[move.endRow][move.endCol] = move.pieceMoved
         self.moveLog.append(move) # log the move so we can undo it later
         self.whiteToMove = not self.whiteToMove # swap players
+        
+    def undoMove(self):
+        if len(self.moveLog) != 0:
+            move = self.moveLog.pop()
+            self.board[move.startRow][move.startCol] = move.pieceMoved
+            self.board[move.endRow][move.endCol] = move.pieceCaptured
+            self.whiteToMove = not self.whiteToMove
+    
 
 class Move():
     #maps keys to values
