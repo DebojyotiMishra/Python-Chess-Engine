@@ -45,7 +45,7 @@ class GameState():
 
 class Move():
     #maps keys to values
-    # key : value
+    # key: value
     ranksToRows = {"1": 7, "2": 6, "3": 5, "4": 4,
                    "5": 3, "6": 2, "7": 1, "8": 0}
     rowsToRanks = {v: k for k, v in ranksToRows.items()}
